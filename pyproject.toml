@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "labs"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.115.5"
+pydantic = "^2.9.2"
+uvicorn = "^0.32.0"
+jinja2 = "^3.1.4"
+python-multipart = "^0.0.17"
+requests = "^2.32.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

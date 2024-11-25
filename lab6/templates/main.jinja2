@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        function hideDelivery() {
+            document.getElementById("background").style.display = 'none';
+        }
+
+        function showDelivery() {
+            document.getElementById("background").style.display = 'block';
+        }
+
+        function showSurvey() {
+            document.getElementById("background2").style.display = 'block';
+        }
+
+        function submitForm() {
+            // Create an XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+
+            // Define the endpoint
+            const url = "/submit";
+
+            // Gather form data
+            const form = document.getElementById('myForm');
+            const formData = new FormData(form);
+
+            // Open the request
+            xhr.open("POST", url, true);
+
+            // Set up a callback to handle the response
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log("Response received:", xhr.responseText);
+                    alert("Form submitted successfully!");
+                } else {
+                    console.error("Error:", xhr.status, xhr.statusText);
+                    alert("Failed to submit the form.");
+                }
+            };
+
+            // Handle network errors
+            xhr.onerror = function () {
+                console.error("Network error occurred.");
+            };
+
+            // Send the request with form data
+            xhr.send(formData);
+            document.getElementById("background2").style.display = 'none';
+        }
+
+    </script>
+
+</head>
+<body>
+<header>
+    <div class="logo">GLOWING</div>
+    <nav>
+        <a href="#"><i class="fas fa-home"></i>Home</a>
+        <a href="#"><i class="fas fa-th"></i>Collection</a>
+        <a href="#"><i class="fas fa-shopping-cart"></i>Shop</a>
+        <a href="#"><i class="fas fa-tags"></i>Offer</a>
+        <a href="#"><i class="fas fa-blog"></i>Blog</a>
+    </nav>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="#">Skincare</a></li>
+            <li><a href="#">Makeup</a></li>
+            <li><a href="#">Fragrance</a></li>
+            <li><a href="#">Body Care</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <section class="section shop" id="shop" aria-label="shop" data-section>
+            <div class="title-wrapper">
+                <h2 class="h2 section-title">Our Bestsellers</h2>
+            </div>
+            <div class="products">
+                {% include 'sell_items.jinja2' %}
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="background2" id="background2">
+    <div class="delivery-form-container survey-main">
+        <h2>Survey</h2>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name2">Recipient's Name</label>
+                <input type="text" id="name2" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone2">Phone Number</label>
+                <input type="tel" id="phone2" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <input type="text" id="comment" name="comment" required>
+            </div>
+            <div class="form-action-buttons">
+                <button type="button" class="submit-btn" onclick="submitForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="survey-button" onclick="showSurvey()">
+    Залишити відгук
+</div>
+<footer>
+    <p>&copy; 2024 Glowing. All rights reserved.</p>
+</footer>
+<script src="{{ url_for('static', path='script.js') }}"></script> <!-- Підключення JavaScript-файлу -->
+</body>
+</html>

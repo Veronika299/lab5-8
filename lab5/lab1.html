@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        function hideDelivery(id, text, btn) {
+            document.getElementById("background").style.display = 'none';
+        }
+
+        function showDelivery(id, text, btn) {
+            // hide the lorem ipsum text
+            document.getElementById("background").style.display = 'block';
+        }
+
+        function deliverItem(id, text, btn) {
+            // document.getElementById(id).style.display = 'block';
+            document.getElementById("background").style.display = 'none';
+            alert("Дякуємо за замовлення!");
+            document.getElementById("background2").style.display = 'block';
+        }
+
+        function submitSurvey(id, text, btn) {
+            document.getElementById("background2").style.display = 'none';
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <div class="logo">GLOWING</div>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i>Home</a>
+            <a href="#"><i class="fas fa-th"></i>Collection</a>
+            <a href="#"><i class="fas fa-shopping-cart"></i>Shop</a>
+            <a href="#"><i class="fas fa-tags"></i>Offer</a>
+            <a href="#"><i class="fas fa-blog"></i>Blog</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#">Skincare</a></li>
+                <li><a href="#">Makeup</a></li>
+                <li><a href="#">Fragrance</a></li>
+                <li><a href="#">Body Care</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section class="section shop" id="shop" aria-label="shop" data-section>
+                <div class="title-wrapper">
+                    <h2 class="h2 section-title">Our Bestsellers</h2>
+                </div>
+                <div class="products">
+                    <div class="product">
+                        <img src="img/img1.jpg" alt="Scin care">
+                        <div class="product-info">
+                            <h3>Scin care</h3>
+                            <p class="price">$29.99</p>
+                            <span class="discount">20% off</span>
+                            <button class="order-button" onclick="showDelivery()">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="img/img2.jpg" alt="Cology">
+                        <div class="product-info">
+                            <h3>Cology</h3>
+                            <p class="price">$24.99</p>
+                            <span class="discount">15% off</span>
+                            <button class="order-button" onclick="showDelivery()">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="img/img3.jpg" alt="Chanel">
+                        <div class="product-info">
+                            <h3>Chanel</h3>
+                            <p class="price">$19.99</p>
+                            <span class="discount">10% off</span>
+                            <button class="order-button" onclick="showDelivery()">Order Now</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="img/img4.jpg" alt="Mitzie">
+                        <div class="product-info">
+                            <h3>Mitzie</h3>
+                            <p class="price">$34.99</p>
+                            <span class="discount">25% off</span>
+                            <button class="order-button" onclick="showDelivery()">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="background" id="background">
+        <div class="delivery-form-container">
+          <h2>Delivery Information</h2>
+          <form>
+            <div class="form-group">
+              <label for="name">Recipient's Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+              <label for="postal-code">Postal Code</label>
+              <input type="number" id="postal-code" name="postal-code" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+              <div class="form-action-buttons">
+                  <button type="submit" class="submit-btn" onclick="deliverItem()">Confirm Delivery</button>
+                  <div class="submit-btn" onclick="hideDelivery()">Close</div>
+              </div>
+          </form>
+        </div>
+    </div>
+
+    <div class="background2" id="background2">
+        <div class="delivery-form-container">
+          <h2>Survey</h2>
+          <form>
+            <div class="form-group">
+              <label for="name">Recipient's Name</label>
+              <input type="text" id="name2" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="address2" name="address" required>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city2" name="city" required>
+            </div>
+            <div class="form-group">
+              <label for="postal-code">Postal Code</label>
+              <input type="number" id="postal-code2" name="postal-code" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone2" name="phone" required>
+            </div>
+              <div class="form-action-buttons">
+                  <button type="submit" class="submit-btn" onclick="submitSurvey()">Submit</button>
+              </div>
+          </form>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <p>&copy; 2024 Glowing. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Підключення JavaScript-файлу -->
+</body>
+</html>
